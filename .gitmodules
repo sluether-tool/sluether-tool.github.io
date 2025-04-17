@@ -1,3 +1,6 @@
 [submodule "maigret"]
 	path = maigret
 	url = https://github.com/soxoj/maigret
+[submodule "holehe"]
+	path = holehe
+	url = https://github.com/megadose/holehe
