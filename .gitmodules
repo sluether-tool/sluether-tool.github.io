@@ -4,3 +4,6 @@
 [submodule "holehe"]
 	path = holehe
 	url = https://github.com/megadose/holehe
+[submodule "social-analyzer"]
+	path = social-analyzer
+	url = https://github.com/qeeqbox/social-analyzer

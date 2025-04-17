@@ -3,3 +3,4 @@
 
 installed holehe
 installed maigret successfully
+installed social-analyzer
