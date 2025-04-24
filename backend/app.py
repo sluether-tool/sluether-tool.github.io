@@ -35,10 +35,10 @@ def run_tools():
         maigret_data = json.load(f)
 
     # Run Social Analyzer
-    analyzer_path = os.path.join(results_dir, "social_analyzer.json")
-    subprocess.run(["node", "social-analyzer/app.js", "-f", user_input, "-o", analyzer_path, "--json"])
-    with open(analyzer_path) as f:
-        analyzer_data = json.load(f)
+ #   analyzer_path = os.path.join(results_dir, "social_analyzer.json")
+  #  subprocess.run(["node", "social-analyzer/app.js", "-f", user_input, "-o", analyzer_path, "--json"])
+   # with open(analyzer_path) as f:
+    #    analyzer_data = json.load(f)
 
     # Return the results to the frontend (GitHub Pages)
     return jsonify({
