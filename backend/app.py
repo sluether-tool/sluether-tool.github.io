@@ -10,6 +10,8 @@ if not os.path.exists("social-analyzer"):
 
 app = Flask(__name__)
 
+port = int(os.environ.get("PORT", 5000))
+
 # This endpoint will be called from the frontend (GitHub Pages)
 @app.route('/run', methods=['POST'])
 def run_tools():
@@ -42,6 +44,8 @@ def run_tools():
     })
 
 if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=port)
+
     app.run(debug=True)
 
 
