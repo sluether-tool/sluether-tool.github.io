@@ -1,3 +1,5 @@
+console.log("script loaded");
+
 const backendURL = "https://sluether-tool-github-io.onrender.com";
 
 document.getElementById("osintForm").addEventListener("submit", async (e) => {
