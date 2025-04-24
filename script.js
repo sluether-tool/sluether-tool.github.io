@@ -12,7 +12,7 @@ document.getElementById("analyze-btn").addEventListener("click", async () => {
   resultsDiv.textContent = "Running analysis... please wait.";
 
   try {
-    const response = await fetch(backendURL, {
+    const response = await fetch(backendURL/run, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
