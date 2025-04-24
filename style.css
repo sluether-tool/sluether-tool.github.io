@@ -1,0 +1,23 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+form input {
+  padding: 10px;
+  width: 300px;
+  margin-right: 10px;
+}
+
+form button {
+  padding: 10px 20px;
+}
+
+pre {
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  overflow-x: auto;
+}
+
