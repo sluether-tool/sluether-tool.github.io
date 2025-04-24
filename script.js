@@ -1,7 +1,7 @@
 const backendURL = "https://sluether-tool-github-io.onrender.com";
 
 document.getElementById("analyze-btn").addEventListener("click", async () => {
-  const username = document.getElementById("username").value.trim();
+  const username = document.getElementById("input").value.trim();
   const resultsDiv = document.getElementById("results");
 
   if (!username) {
@@ -12,7 +12,7 @@ document.getElementById("analyze-btn").addEventListener("click", async () => {
   resultsDiv.textContent = "Running analysis... please wait.";
 
   try {
-    const response = await fetch(backendURL/run, {
+    const response = await fetch(`${backendURL}/run`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
