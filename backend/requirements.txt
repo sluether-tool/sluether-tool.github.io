@@ -4,4 +4,3 @@ git+https://github.com/megadose/holehe.git
 
 flask-cors
 gunicorn
-yargs
