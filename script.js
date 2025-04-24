@@ -1,4 +1,4 @@
-const backendURL = "https://your-render-url.onrender.com/run"; // replace with your actual URL
+const backendURL = "https://sluether-tool-github-io.onrender.com";
 
 document.getElementById("analyze-btn").addEventListener("click", async () => {
   const username = document.getElementById("username").value.trim();
