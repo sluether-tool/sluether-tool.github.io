@@ -1,27 +1,33 @@
-document.getElementById('osintForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
-  const input = document.getElementById('input').value;
-  const resultDiv = document.getElementById('result');
-  resultDiv.innerHTML = "Running lookup...";
+const backendURL = "https://your-render-url.onrender.com/run"; // replace with your actual URL
+
+document.getElementById("analyze-btn").addEventListener("click", async () => {
+  const username = document.getElementById("username").value.trim();
+  const resultsDiv = document.getElementById("results");
+
+  if (!username) {
+    resultsDiv.textContent = "Please enter a username or email.";
+    return;
+  }
+
+  resultsDiv.textContent = "Running analysis... please wait.";
 
   try {
-    const res = await fetch('https://your-backend-url.com/run', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ input })
+    const response = await fetch(backendURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ input: username })
     });
 
-    if (!res.ok) throw new Error("Something went wrong");
+    if (!response.ok) throw new Error("Server returned an error");
 
-    const data = await res.json();
+    const data = await response.json();
 
-    resultDiv.innerHTML = `
-      <h3>Holehe:</h3><pre>${data.holehe}</pre>
-      <h3>Maigret:</h3><pre>${JSON.stringify(data.maigret, null, 2)}</pre>
-      <h3>Social Analyzer:</h3><pre>${JSON.stringify(data.social_analyzer, null, 2)}</pre>
-    `;
-  } catch (err) {
-    resultDiv.innerHTML = "Error: " + err.message;
+    // Format and display results
+    resultsDiv.textContent = JSON.stringify(data, null, 2);
+  } catch (error) {
+    resultsDiv.textContent = `Error: ${error.message}`;
   }
 });
 
