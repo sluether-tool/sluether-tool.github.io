@@ -36,7 +36,7 @@ def run_tools():
 
     # Run Social Analyzer
     analyzer_path = os.path.join(results_dir, "social_analyzer.json")
-    subprocess.run(["social-analyzer", "-f", user_input, "-o", analyzer_path, "--json"])
+    subprocess.run(["node", "social-analyzer/analyzer.js", "-f", user_input, "-o", analyzer_path, "--json"])
     with open(analyzer_path) as f:
         analyzer_data = json.load(f)
 
