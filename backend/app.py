@@ -17,7 +17,9 @@ port = int(os.environ.get("PORT", 5000))
 # This endpoint will be called from the frontend (GitHub Pages)
 @app.route('/run', methods=['POST'])
 def run_tools():
+    print("received post /run")
     data = request.json
+    print("input from frontend:", data)
     user_input = data.get("input")
     task_id = str(uuid.uuid4())
     results_dir = f"/tmp/osint_{task_id}"
