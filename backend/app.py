@@ -44,7 +44,7 @@ def run_tools():
     return jsonify({
         "holehe": holehe_out,
         "maigret": maigret_data,
-        "social_analyzer": analyzer_data
+   #     "social_analyzer": analyzer_data
     })
 
 if __name__ == '__main__':
