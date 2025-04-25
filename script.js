@@ -33,3 +33,32 @@ document.getElementById("osintForm").addEventListener("submit", async (e) => {
   }
 });
 
+
+// Call this function with your JSON response
+function displayResults(data) {
+  const container = document.getElementById("results-container");
+  container.innerHTML = "";
+
+  const createSection = (title, content) => {
+    const details = document.createElement("details");
+    details.open = true;
+
+    const summary = document.createElement("summary");
+    summary.textContent = title;
+
+    const pre = document.createElement("pre");
+    pre.textContent = typeof content === "string" ? content : JSON.stringify(content, null, 2);
+
+    details.appendChild(summary);
+    details.appendChild(pre);
+    container.appendChild(details);
+  };
+
+  createSection("Holehe", data.holehe);
+  createSection("Maigret", data.maigret);
+}
+
+  .then(res => res.json())
+  .then(data => displayResults(data))
+  .catch(err => console.error("API Error:", err));
+
