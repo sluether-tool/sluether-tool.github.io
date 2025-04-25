@@ -4,7 +4,7 @@ document.getElementById("osintform").addEventListener("submit", async (e) => {
   e.preventDefault(); // Prevent page reload
 
   const username = document.getElementById("input").value.trim();
-  const resultsDiv = document.getElementById("result");
+  const resultsDiv = document.getElementById("results-container");
   const resultsContainer = document.getElementById("results-container");
 
   if (!username) {
