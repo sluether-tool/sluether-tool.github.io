@@ -1,6 +1,6 @@
 const backendURL = "https://sluether-tool-github-io.onrender.com";
 
-document.getElementById("osintForm").addEventListener("submit", async (e) => {
+document.getElementById("osintform").addEventListener("submit", async (e) => {
   e.preventDefault(); // Prevent page reload
 
   const username = document.getElementById("input").value.trim();
