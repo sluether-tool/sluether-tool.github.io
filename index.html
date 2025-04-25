@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>OSINT Tool</title>
-  <link rel="stylesheet" href="style.css">
+  <title>OSINT Results</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>OSINT Lookup</h1>
-  <form id="osintForm">
-    <input type="text" id="input" placeholder="Enter email, username, or phone" required>
-    <button type="submit" id="analyze-btn">Run Lookup</button>
-  </form>
-  <div id="result"></div>
+
+<form id="osintform">
+  <input type="text" id="input" placeholder="Enter username" required>
+  <button type="submit">Search</button>
+</form>
+
+  <div id="results-container"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
-
 

@@ -1,19 +1,19 @@
-console.log("script loaded");
-
 const backendURL = "https://sluether-tool-github-io.onrender.com";
 
 document.getElementById("osintForm").addEventListener("submit", async (e) => {
   e.preventDefault(); // Prevent page reload
 
   const username = document.getElementById("input").value.trim();
-  const resultsDiv = document.getElementById("result"); // Make sure this ID matches HTML
+  const resultsDiv = document.getElementById("result");
+  const resultsContainer = document.getElementById("results-container");
 
   if (!username) {
     resultsDiv.textContent = "Please enter a username or email.";
     return;
   }
 
-  resultsDiv.textContent = "Running analysis... please wait.";
+  resultsDiv.textContent = "Running analysis... please wait...";
+  resultsContainer.innerHTML = ""; // Clear previous results
 
   try {
     const response = await fetch(`${backendURL}/run`, {
@@ -27,14 +27,16 @@ document.getElementById("osintForm").addEventListener("submit", async (e) => {
     if (!response.ok) throw new Error("Server returned an error");
 
     const data = await response.json();
-    resultsDiv.textContent = JSON.stringify(data, null, 2);
+    
+    // Optional: hide or clear the "Running..." message
+    resultsDiv.textContent = "";
+
+    displayResults(data); // ✅ Display nicely
   } catch (error) {
     resultsDiv.textContent = `Error: ${error.message}`;
   }
 });
 
-
-// Call this function with your JSON response
 function displayResults(data) {
   const container = document.getElementById("results-container");
   container.innerHTML = "";
@@ -54,11 +56,8 @@ function displayResults(data) {
     container.appendChild(details);
   };
 
-  createSection("Holehe", data.holehe);
-  createSection("Maigret", data.maigret);
+  createSection("🔍 Holehe", data.holehe);
+  createSection("📊 Maigret", data.maigret);
+  createSection("🌐 Social Analyzer", data.social_analyzer || "No data returned.");
 }
-
-  .then(res => res.json())
-  .then(data => displayResults(data))
-  .catch(err => console.error("API Error:", err));
 
