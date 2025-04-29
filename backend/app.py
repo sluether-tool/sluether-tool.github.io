@@ -3,14 +3,9 @@ import subprocess
 import uuid
 import os
 import json
-from flask_cors import CORS
-
-if not os.path.exists("social-analyzer"):
-    subprocess.run(["git", "clone", "https://github.com/qeeqbox/social-analyzer.git"])
-
 app = Flask(__name__)
 
-CORS(app, resources={r"/run": {"origins": "https://sluether-tool.github.io"}})
+CORS(app, resources={r"/*": {"origins": "https://sluether-tool.github.io"}})
 
 port = int(os.environ.get("PORT", 5000))
 
