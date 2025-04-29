@@ -55,23 +55,8 @@ function displayResults(data) {
         details.appendChild(pre);
         container.appendChild(details);
   };
-
-  const copyData = {data.holehe};
-
-  const filteredData = {};
   
-  for (const key in copyData) {
-    if (copyData.hasOwnProperty(key)) {
-      const item = copyData[key];
-      filteredData[key] = {
-        url_main: item.url_main,
-        url_user: item.url_user,
-        username: item.username
-      };
-    }
-  }
-
-  createSection("Holehe", filteredData);
+  createSection("Holehe", data.holehe);
   createSection("Maigret", data.maigret);
 }
 
