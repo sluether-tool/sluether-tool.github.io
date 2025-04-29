@@ -56,8 +56,7 @@ function displayResults(data) {
         container.appendChild(details);
       };
 
-      createSection("🔍 Holehe", data.holehe);
-      createSection("📊 Maigret", data.maigret);
-      createSection("🌐 Social Analyzer", data.social_analyzer || "No data returned.");
+      createSection("Holehe", data.holehe);
+      createSection("Maigret", data.maigret);
 }
 
