@@ -31,7 +31,7 @@ document.getElementById("osintform").addEventListener("submit", async (e) => {
     // Optional: hide or clear the "Running..." message
     resultsDiv.textContent = "";
 
-    displayResults(data); // ✅ Display nicely
+    displayResults(data);
   } catch (error) {
     resultsDiv.textContent = `Error: ${error.message}`;
   }
@@ -42,22 +42,21 @@ function displayResults(data) {
   container.innerHTML = "";
 
   const createSection = (title, content) => {
-    const details = document.createElement("details");
-    details.open = true;
+        const details = document.createElement("details");
+        details.open = false;
 
-    const summary = document.createElement("summary");
-    summary.textContent = title;
+        const summary = document.createElement("summary");
+        summary.textContent = title;
 
-    const pre = document.createElement("pre");
-    pre.textContent = typeof content === "string" ? content : JSON.stringify(content, null, 2);
+        const pre = document.createElement("pre");
+        pre.textContent = typeof content === "string" ? content : JSON.stringify(content, null, 2);
 
-    details.appendChild(summary);
-    details.appendChild(pre);
-    container.appendChild(details);
+        details.appendChild(summary);
+        details.appendChild(pre);
+        container.appendChild(details);
   };
-
-  createSection("🔍 Holehe", data.holehe);
-  createSection("📊 Maigret", data.maigret);
-  createSection("🌐 Social Analyzer", data.social_analyzer || "No data returned.");
+  
+  createSection("Holehe", data.holehe);
+  createSection("Maigret", data.maigret);
 }
 
