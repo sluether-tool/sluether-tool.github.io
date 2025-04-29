@@ -29,11 +29,11 @@ def run_tools():
     holehe_out = subprocess.run(["holehe", user_input], capture_output=True, text=True).stdout
 
     # Run Maigret
-    maigret_path = os.path.join(results_dir, f"report_{user_input}_simple.json")
+    maigret_path = os.path.join(results_dir, f"report_{user_input}.html")
     subprocess.run(["maigret", user_input, "--html", "--retries", "2", "-fo", os.path.dirname(maigret_path)])
     
-    with open(maigret_path) as f:
-        maigret_data = json.load(f)
+    with open(maigret_html_path, 'r', encoding='utf-8') as f:
+        maigret_data = f.read()
 
     # Run Social Analyzer
  #   analyzer_path = os.path.join(results_dir, "social_analyzer.json")
