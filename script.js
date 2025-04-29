@@ -31,7 +31,7 @@ document.getElementById("osintform").addEventListener("submit", async (e) => {
     // Optional: hide or clear the "Running..." message
     resultsDiv.textContent = "";
 
-    displayResults(data); // ✅ Display nicely
+    displayResults(data);
   } catch (error) {
     resultsDiv.textContent = `Error: ${error.message}`;
   }
@@ -43,16 +43,34 @@ function displayResults(data) {
 
   const createSection = (title, content) => {
     const details = document.createElement("details");
-    details.open = true;
+    details.open = false;
 
     const summary = document.createElement("summary");
     summary.textContent = title;
 
-    const pre = document.createElement("pre");
-    pre.textContent = typeof content === "string" ? content : JSON.stringify(content, null, 2);
+    const contentDiv = document.createElement("div");
+
+    if (Array.isArray(content)) {
+      content.forEach((item, index) => {
+        const block = document.createElement("div");
+        block.style.marginBottom = "1em";
+
+        const fields = [
+          `🔹 Title: ${item.title || "N/A"}`,
+          `🔗 Main URL: ${item.url_main || "N/A"}`,
+          `👤 User URL: ${item.url_user || "N/A"}`,
+          `📛 Username: ${item.username || "N/A"}`
+        ];
+
+        block.innerHTML = fields.map(line => `<div>${line}</div>`).join("");
+        contentDiv.appendChild(block);
+      });
+    } else {
+      contentDiv.textContent = "No data available.";
+    }
 
     details.appendChild(summary);
-    details.appendChild(pre);
+    details.appendChild(contentDiv);
     container.appendChild(details);
   };
 
