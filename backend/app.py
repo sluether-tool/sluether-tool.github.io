@@ -26,7 +26,7 @@ def run_tools():
     holehe_out = subprocess.run(["holehe", user_input], capture_output=True, text=True).stdout
 
     # Run Maigret
-    maigret_path = os.path.join(results_dir, f"report_{user_input}.html")
+    maigret_path = os.path.join(results_dir, f"report_{user_input}_plain.html")
     subprocess.run(["maigret", user_input, "--html", "--retries", "2", "-fo", os.path.dirname(maigret_path)])
     
     with open(maigret_path, 'r', encoding='utf-8') as f:
