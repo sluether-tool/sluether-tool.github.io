@@ -42,20 +42,29 @@ function displayResults(data) {
   container.innerHTML = "";
 
   const createSection = (title, content) => {
-        const details = document.createElement("details");
-        details.open = false;
+    const details = document.createElement("details");
+    details.open = false;
 
-        const summary = document.createElement("summary");
-        summary.textContent = title;
+    const summary = document.createElement("summary");
+    summary.textContent = title;
+    details.appendChild(summary);
 
-        const pre = document.createElement("pre");
-        pre.textContent = typeof content === "string" ? content : JSON.stringify(content, null, 2);
+    if (typeof content === "string" && content.trim().startsWith("<!DOCTYPE html")) {
+      const iframe = document.createElement("iframe");
+      iframe.style.width = "100%";
+      iframe.style.height = "600px";
+      iframe.style.border = "1px solid #ccc";
+      iframe.srcdoc = content;
+      details.appendChild(iframe);
+    } else {
+      const pre = document.createElement("pre");
+      pre.textContent = typeof content === "string" ? content : JSON.stringify(content, null, 2);
+      details.appendChild(pre);
+    }
 
-        details.appendChild(summary);
-        details.appendChild(pre);
-        container.appendChild(details);
+    container.appendChild(details);
   };
-  
+
   createSection("Holehe", data.holehe);
   createSection("Maigret", data.maigret);
 }
