@@ -30,7 +30,8 @@ def run_tools():
 
     # Run Maigret
     maigret_path = os.path.join(results_dir, f"report_{user_input}_simple.json")
-    subprocess.run(["maigret", user_input, "--html", "simple", "--retries", "2", "-fo", os.path.dirname(maigret_path)])
+    subprocess.run(["maigret", user_input, "--html", "--retries", "2", "-fo", os.path.dirname(maigret_path)])
+    
     with open(maigret_path) as f:
         maigret_data = json.load(f)
 
