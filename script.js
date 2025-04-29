@@ -42,40 +42,22 @@ function displayResults(data) {
   container.innerHTML = "";
 
   const createSection = (title, content) => {
-    const details = document.createElement("details");
-    details.open = false;
+        const details = document.createElement("details");
+        details.open = false;
 
-    const summary = document.createElement("summary");
-    summary.textContent = title;
+        const summary = document.createElement("summary");
+        summary.textContent = title;
 
-    const contentDiv = document.createElement("div");
+        const pre = document.createElement("pre");
+        pre.textContent = typeof content === "string" ? content : JSON.stringify(content, null, 2);
 
-    if (Array.isArray(content)) {
-      content.forEach((item, index) => {
-        const block = document.createElement("div");
-        block.style.marginBottom = "1em";
+        details.appendChild(summary);
+        details.appendChild(pre);
+        container.appendChild(details);
+      };
 
-        const fields = [
-          `🔹 Title: ${item.title || "N/A"}`,
-          `🔗 Main URL: ${item.url_main || "N/A"}`,
-          `👤 User URL: ${item.url_user || "N/A"}`,
-          `📛 Username: ${item.username || "N/A"}`
-        ];
-
-        block.innerHTML = fields.map(line => `<div>${line}</div>`).join("");
-        contentDiv.appendChild(block);
-      });
-    } else {
-      contentDiv.textContent = "No data available.";
-    }
-
-    details.appendChild(summary);
-    details.appendChild(contentDiv);
-    container.appendChild(details);
-  };
-
-  createSection("🔍 Holehe", data.holehe);
-  createSection("📊 Maigret", data.maigret);
-  createSection("🌐 Social Analyzer", data.social_analyzer || "No data returned.");
+      createSection("🔍 Holehe", data.holehe);
+      createSection("📊 Maigret", data.maigret);
+      createSection("🌐 Social Analyzer", data.social_analyzer || "No data returned.");
 }
 
