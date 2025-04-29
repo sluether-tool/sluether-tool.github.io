@@ -29,7 +29,7 @@ def run_tools():
     maigret_path = os.path.join(results_dir, f"report_{user_input}.html")
     subprocess.run(["maigret", user_input, "--html", "--retries", "2", "-fo", os.path.dirname(maigret_path)])
     
-    with open(maigret_html_path, 'r', encoding='utf-8') as f:
+    with open(maigret_path, 'r', encoding='utf-8') as f:
         maigret_data = f.read()
 
     # Run Social Analyzer
