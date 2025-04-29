@@ -4,6 +4,7 @@ import uuid
 import os
 import json
 from flask_cors import CORS
+import base64
 
 app = Flask(__name__)
 
